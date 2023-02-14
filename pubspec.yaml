@@ -38,6 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   webview_flutter: ^3.0.2
   flutter_dropdown: ^1.0.1+hotfix.1
+  http: ^0.13.5
+  rxdart: ^0.27.5
+  fl_toast: ^3.1.0
 
 dev_dependencies:
   flutter_test:

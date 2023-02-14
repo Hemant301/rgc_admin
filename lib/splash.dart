@@ -12,7 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacementNamed(
-        '/gest_approval',
+        '/login',
       );
     });
     return Scaffold(
