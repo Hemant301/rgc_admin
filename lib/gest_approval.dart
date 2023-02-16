@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rgc_admin/apicall/bloc.dart';
 import 'package:rgc_admin/apicall/modal.dart';
+import 'package:rgc_admin/util/userCred.dart';
 
 class GuestApprovel extends StatelessWidget {
   const GuestApprovel({super.key});
@@ -18,6 +19,18 @@ class GuestApprovel extends StatelessWidget {
               fontWeight: FontWeight.bold,
             )),
         iconTheme: const IconThemeData(color: Colors.black),
+        actions: [
+          InkWell(
+            onTap: () {
+              userCred.logoutUser();
+              Navigator.pushNamed(context, '/login');
+            },
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.logout),
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(children: [
@@ -27,7 +40,9 @@ class GuestApprovel extends StatelessWidget {
           StreamBuilder<GuestReqListModal>(
               stream: homeBloc.getGuestReqListModal.stream,
               builder: (context, snapshot) {
-                if (!snapshot.hasData) return Container();
+                if (!snapshot.hasData) {
+                  return const Center(child: CircularProgressIndicator());
+                }
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
@@ -129,7 +144,11 @@ class GuestApprovel extends StatelessWidget {
                                                     context, "/gest_app_detail",
                                                     arguments: {
                                                       'id': snapshot
-                                                          .data!.list[index].id
+                                                          .data!.list[index].id,
+                                                      'name': snapshot.data!
+                                                          .list[index].name,
+                                                      'phone': snapshot.data!
+                                                          .list[index].phone
                                                     });
                                               },
                                               child: Container(

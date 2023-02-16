@@ -41,6 +41,7 @@ dependencies:
   http: ^0.13.5
   rxdart: ^0.27.5
   fl_toast: ^3.1.0
+  shared_preferences: ^2.0.17
 
 dev_dependencies:
   flutter_test:

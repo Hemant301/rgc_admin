@@ -1,4 +1,7 @@
+import 'package:fl_toast/fl_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:rgc_admin/apicall/api.dart';
+import 'package:rgc_admin/util/userCred.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -8,6 +11,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController emailCon = TextEditingController();
+  TextEditingController pwdCon = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +41,11 @@ class _LoginState extends State<Login> {
                 height: 40,
               ),
               TextFormField(
-                keyboardType: TextInputType.number,
+                controller: emailCon,
                 decoration: const InputDecoration(
-                    hintText: 'Phone number',
+                    hintText: 'Email',
                     suffixIcon: Icon(
-                      Icons.phone_android,
+                      Icons.email,
                       color: Colors.grey,
                     )),
               ),
@@ -48,6 +53,8 @@ class _LoginState extends State<Login> {
                 height: 10,
               ),
               TextFormField(
+                controller: pwdCon,
+                obscureText: true,
                 decoration: const InputDecoration(
                     hintText: 'Password',
                     suffixIcon: Icon(
@@ -59,8 +66,20 @@ class _LoginState extends State<Login> {
                 height: 50,
               ),
               GradientButtonFb4(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/gest_approval');
+                onPressed: () async {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  if (emailCon.text == "" || pwdCon.text == "") {
+                    showTextToast(
+                        text: "Enter email and password", context: context);
+                    return;
+                  }
+                  HomeApi api = HomeApi();
+                  Map data = await api.login(context,
+                      email: emailCon.text, pwd: pwdCon.text);
+                  if (data['status'].toString() == "200") {
+                    userCred.addUserId(data['user']['_id'].toString());
+                    Navigator.pushNamed(context, '/gest_approval');
+                  }
                 },
                 text: 'Login',
               )

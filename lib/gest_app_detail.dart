@@ -40,26 +40,26 @@ class _GestAppDetailState extends State<GestAppDetail> {
               height: 20,
             ),
             Row(
-              children: const [
-                Text("Member Name  -  ",
+              children: [
+                const Text("Member Name  -  ",
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue)),
-                Text("FDVJDFHV"),
+                Text("${rcvd['name']}"),
               ],
             ),
             const SizedBox(
               height: 8,
             ),
             Row(
-              children: const [
-                Text("Phone Number  -  ",
+              children: [
+                const Text("Phone Number  -  ",
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue)),
-                Text("FDVJDFHV"),
+                Text("${rcvd['phone']}"),
               ],
             ),
             const SizedBox(
@@ -71,7 +71,8 @@ class _GestAppDetailState extends State<GestAppDetail> {
             StreamBuilder<GuestDetailModal>(
                 stream: homeBloc.getLiveDeatils.stream,
                 builder: (context, snapshot) {
-                  if (!snapshot.hasData) return Container();
+                  if (!snapshot.hasData)
+                    return const CircularProgressIndicator();
                   return Column(
                     children: List.generate(
                         snapshot.data!.list.length,

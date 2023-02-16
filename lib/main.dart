@@ -3,9 +3,12 @@ import 'package:rgc_admin/gest_app_detail.dart';
 import 'package:rgc_admin/gest_approval.dart';
 import 'package:rgc_admin/login.dart';
 import 'package:rgc_admin/splash.dart';
+import 'package:rgc_admin/util/storage.dart';
 import 'package:rgc_admin/webview.dart';
 
-void main() {
+void main()async {
+    WidgetsFlutterBinding.ensureInitialized();
+  await StorageUtil.getInstance();
   runApp(const MyApp());
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rgc_admin/util/userCred.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,9 +12,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed(
-        '/login',
-      );
+      if (userCred.isUserLogin()) {
+        Navigator.of(context).pushReplacementNamed(
+          '/gest_approval',
+        );
+      } else {
+        Navigator.of(context).pushReplacementNamed(
+          '/login',
+        );
+      }
     });
     return Scaffold(
       body: Column(
