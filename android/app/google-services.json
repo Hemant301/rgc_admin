@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "933692872403",
+    "project_id": "rgc-admin",
+    "storage_bucket": "rgc-admin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933692872403:android:07782bd2ce353ae284e626",
+        "android_client_info": {
+          "package_name": "com.rgc_admin.ctpl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933692872403-ien4rc50269oq1m125o3i3so6dmiionu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOW6jLnZ388Wy4_ftSlsS2y6jt8MRbw7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933692872403-ien4rc50269oq1m125o3i3so6dmiionu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

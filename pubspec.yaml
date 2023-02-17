@@ -42,6 +42,14 @@ dependencies:
   rxdart: ^0.27.5
   fl_toast: ^3.1.0
   shared_preferences: ^2.0.17
+  firebase_messaging: ^11.1.0
+  flutter_local_notifications: ^9.1.4
+  path_provider: ^2.0.11 
+  path_provider_android: ^2.0.12
+  path_provider_ios: ^2.0.8
+
+dependency_overrides:
+  firebase_core_platform_interface: 4.5.1
 
 dev_dependencies:
   flutter_test:

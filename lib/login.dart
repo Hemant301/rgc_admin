@@ -24,7 +24,7 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "assets/ic_launcher.png",
+                "assets/RGC logo golden real.png",
                 height: 80,
               ),
               const SizedBox(
