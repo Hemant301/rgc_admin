@@ -78,7 +78,7 @@ class _LoginState extends State<Login> {
                       email: emailCon.text, pwd: pwdCon.text);
                   if (data['status'].toString() == "200") {
                     userCred.addUserId(data['user']['_id'].toString());
-                    Navigator.pushNamed(context, '/gest_approval');
+                    Navigator.pushReplacementNamed(context, '/gest_approval');
                   }
                 },
                 text: 'Login',

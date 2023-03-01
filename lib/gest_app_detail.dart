@@ -39,40 +39,52 @@ class _GestAppDetailState extends State<GestAppDetail> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              children: [
-                const Text("Member Name  -  ",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue)),
-                Text("${rcvd['name']}"),
-              ],
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Row(
-              children: [
-                const Text("Phone Number  -  ",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue)),
-                Text("${rcvd['phone']}"),
-              ],
-            ),
-            const SizedBox(
-              height: 8,
-            ),
+            StreamBuilder<GuestDetailModal>(
+                stream: homeBloc.getLiveDeatils.stream,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Container();
+                  }
+                  return Column(
+                    children: [
+                      Row(
+                        children: [
+                          const Text("Member Name  -  ",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue)),
+                          Text(snapshot.data!.list[0].memberDetail!.name),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        children: [
+                          const Text("Member Code  -  ",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue)),
+                          Text(snapshot.data!.list[0].memberCode!),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                    ],
+                  );
+                }),
             const SizedBox(
               height: 20,
             ),
             StreamBuilder<GuestDetailModal>(
                 stream: homeBloc.getLiveDeatils.stream,
                 builder: (context, snapshot) {
-                  if (!snapshot.hasData)
+                  if (!snapshot.hasData) {
                     return const CircularProgressIndicator();
+                  }
                   return Column(
                     children: List.generate(
                         snapshot.data!.list.length,
@@ -288,41 +300,66 @@ class _GestAppDetailState extends State<GestAppDetail> {
                                                                   "Pending",
                                                                 ],
                                                                 onChanged:
-                                                                    (value) {
-                                                                  setState(() {
-                                                                    if (value ==
-                                                                        "Approved") {
-                                                                      homeApi.updateStatus(
-                                                                          context,
-                                                                          guestId: snapshot
-                                                                              .data!
-                                                                              .list[i]
-                                                                              .user[index]
-                                                                              .id
-                                                                              .toString(),
-                                                                          status: "1");
-                                                                    } else if (value ==
-                                                                        "Pending") {
-                                                                      homeApi.updateStatus(
-                                                                          context,
-                                                                          guestId: snapshot
-                                                                              .data!
-                                                                              .list[i]
-                                                                              .user[index]
-                                                                              .id
-                                                                              .toString(),
-                                                                          status: "0");
+                                                                    (value) async {
+                                                                  if (value ==
+                                                                      "Approved") {
+                                                                    Map data = await homeApi.updateStatus(
+                                                                        context,
+                                                                        guestId: snapshot
+                                                                            .data!
+                                                                            .list[
+                                                                                i]
+                                                                            .user[
+                                                                                index]
+                                                                            .id
+                                                                            .toString(),
+                                                                        status:
+                                                                            "1");
+                                                                    if (data[
+                                                                            'success'] ==
+                                                                        true) {
+                                                                      setState(
+                                                                          () {});
+                                                                    } else {
+                                                                      setState(
+                                                                          () {});
                                                                     }
+                                                                  } else if (value ==
+                                                                      "Pending") {
+                                                                    Map data = await homeApi.updateStatus(
+                                                                        context,
+                                                                        guestId: snapshot
+                                                                            .data!
+                                                                            .list[
+                                                                                i]
+                                                                            .user[
+                                                                                index]
+                                                                            .id
+                                                                            .toString(),
+                                                                        status:
+                                                                            "0");
+                                                                    if (data[
+                                                                            'success'] ==
+                                                                        true) {
+                                                                      setState(
+                                                                          () {});
+                                                                    }
+                                                                  }
 
-                                                                    value ==
-                                                                            "Reject"
-                                                                        ? UpdatePopuP(
-                                                                            context,
-                                                                            snapshot.data!.list[i].user[index].id.toString(),
-                                                                            "2",
-                                                                            rcvd['id'])
-                                                                        : Container();
-                                                                  });
+                                                                  value ==
+                                                                          "Reject"
+                                                                      ? UpdatePopuP(
+                                                                          context,
+                                                                          snapshot
+                                                                              .data!
+                                                                              .list[i]
+                                                                              .user[index]
+                                                                              .id
+                                                                              .toString(),
+                                                                          "2",
+                                                                          rcvd['id'])
+                                                                      : Container();
+
                                                                   print(value);
                                                                   // _accounttype = value.toString();
                                                                 },
@@ -354,7 +391,29 @@ class _GestAppDetailState extends State<GestAppDetail> {
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
+                                                        )
+                                                        // : Expanded(
+                                                        //     flex: 2,
+                                                        //     child: Center(
+                                                        //       child: Text(
+                                                        //         getStatus(snapshot
+                                                        //             .data!
+                                                        //             .list[i]
+                                                        //             .user[
+                                                        //                 index]
+                                                        //             .status),
+                                                        //         style: TextStyle(
+                                                        //             color: getStatusColor(snapshot
+                                                        //                 .data!
+                                                        //                 .list[
+                                                        //                     i]
+                                                        //                 .user[
+                                                        //                     index]
+                                                        //                 .status),
+                                                        //             fontSize:
+                                                        //                 12),
+                                                        //       ),
+                                                        //     )),
                                                       ],
                                                     ),
                                                   ))),
@@ -485,6 +544,7 @@ UpdatePopuP(context, guestId, status, rcvdId) {
                                         guestId: guestId,
                                         status: status,
                                         reason: reasonController.text);
+                                    homeBloc.fetchGuestDetails(rcvdId);
                                     Navigator.pop(context);
                                   },
                                   child: Container(

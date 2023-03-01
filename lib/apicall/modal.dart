@@ -32,19 +32,35 @@ class GuestDetailModal {
 class GuestDetailListModal {
   String? date;
   String? time;
+  String? memberCode;
+  MemberDetail? memberDetail;
   List<GuestUserListModal> user = [];
   GuestDetailListModal(js) {
     date = js['pick_date'] ?? "";
     time = js['pick_time'] ?? "";
+    memberCode = js['member_code'] ?? "";
+    memberDetail = MemberDetail(js['memberDetail']);
     for (var i = 0; i < js['guestList'].length; i++) {
       user.add(GuestUserListModal(js['guestList'][i]));
     }
   }
 }
 
+class MemberDetail {
+  dynamic id;
+  dynamic name;
+  dynamic phone;
+  MemberDetail(js) {
+    id = js['id'] ?? "";
+    name = js['name'] ?? "";
+    phone = js['phone'] ?? "";
+  }
+}
+
 class GuestUserListModal {
   dynamic id;
   dynamic name;
+  dynamic isStatus;
   dynamic phone;
   dynamic reason;
   dynamic approvedBy;
@@ -56,5 +72,6 @@ class GuestUserListModal {
     reason = js['reason'] ?? "";
     approvedBy = js['approved_by'] ?? "";
     status = js['status'] ?? "";
+    isStatus = js['isStatus'] ?? "";
   }
 }

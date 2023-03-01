@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
+import 'package:path_provider_android/path_provider_android.dart';
+import 'package:path_provider_ios/path_provider_ios.dart';
 import 'package:rgc_admin/gest_app_detail.dart';
 import 'package:rgc_admin/gest_approval.dart';
 import 'package:rgc_admin/login.dart';
@@ -32,7 +37,7 @@ void main() async {
   if (remoteMessage != null) {
     if (remoteMessage.data['notification_type'].toString() == "1") {
       Future.delayed(const Duration(seconds: 1), () {
-        Navigator.pushNamed(
+        Navigator.pushReplacementNamed(
             MyApp.navigatorKey.currentState!.context, '/gest_app_detail',
             arguments: {
               'id': remoteMessage.data['user_id'],
@@ -42,10 +47,14 @@ void main() async {
       });
     }
   }
-  FirebaseMessaging.onMessage.listen((event) {
+  FirebaseMessaging.onMessage.listen((event) async {
     // {HEADER: head, body: body, message: title, intent-type: HOME, type: TEXT, id: inte}
 
     print('${event.data}----------------------');
+    FlutterAppBadger.updateBadgeCount(1);
+    FlutterAppBadger.isAppBadgeSupported()
+        .then((value) => print("badge $value"));
+
     showThisNotification(event.data);
   });
   FirebaseMessaging.instance.subscribeToTopic('news');
@@ -83,23 +92,27 @@ class MyApp extends StatelessWidget {
 }
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
-  'rgc_admin', // id
+  'rgc_admin1', // id
   'rgc_admin', // title
   importance: Importance.max,
 
-  // playSound: true,
-  // sound: RawResourceAndroidNotificationSound('notification'),
+  playSound: true,
+  sound: RawResourceAndroidNotificationSound('notification'),
 );
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  if (Platform.isAndroid) PathProviderAndroid.registerWith();
+  if (Platform.isIOS) PathProviderIOS.registerWith();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   print('A bg message just showed up :  ${message.messageId}');
 
   print(message.data);
   await FirebaseMessaging.instance.subscribeToTopic('news');
+  FlutterAppBadger.updateBadgeCount(3);
+
   showThisNotification(message.data);
 }

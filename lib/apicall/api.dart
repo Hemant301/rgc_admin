@@ -23,6 +23,7 @@ class HomeApi {
   }
 
   Future<dynamic> fetchGuestDetails(id) async {
+    print(id);
     try {
       final response = await client.post(
           Uri.parse(
@@ -44,15 +45,17 @@ class HomeApi {
       {String guestId = "", String status = "", String reason = ""}) async {
     var client = http.Client();
     try {
-      // print(accid);
-      // print(otp);
+      print(guestId);
+      print(status);
+      print(reason);
+      print(userCred.getUserId());
       final response = await client.post(
           Uri.parse(
               "https://plankton-app-scdik.ondigitalocean.app/e846ed/api/guestapproval/update/$guestId"),
           body: {
             "status": status,
             "reason": reason,
-            "approved_by": userCred.getUserId()
+            "approval_by": userCred.getUserId()
           });
       if (response.statusCode == 200) {
         print(response.body);
