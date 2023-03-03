@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -6,6 +7,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:path_provider_android/path_provider_android.dart';
 import 'package:path_provider_ios/path_provider_ios.dart';
+=======
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+>>>>>>> Stashed changes
 import 'package:rgc_admin/gest_app_detail.dart';
 import 'package:rgc_admin/gest_approval.dart';
 import 'package:rgc_admin/login.dart';
@@ -13,8 +21,6 @@ import 'package:rgc_admin/notify.dart';
 import 'package:rgc_admin/splash.dart';
 import 'package:rgc_admin/util/storage.dart';
 import 'package:rgc_admin/webview.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
