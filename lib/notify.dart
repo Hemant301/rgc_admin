@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
-import 'package:rgc_admin/apicall/bloc.dart';
 import 'package:rgc_admin/util/userCred.dart';
 
 import '../main.dart';
@@ -40,7 +39,7 @@ class _TokenMonitor extends State<TokenMonitor> {
       log(body.toString());
       final response = await client.post(
           Uri.parse(
-              "https://cms.cybertize.in/notificationServiceHandlerTest/panel/register-token-api.php"),
+              "https://cms.cybertize.in/notificationServiceHandler/panel/register-token-api.php"),
           // Uri.parse(
           //     "https://cms.cybertize.in/notificationServiceHandler/register-token.php"),
 
@@ -270,7 +269,7 @@ Future<void> showBigPictureNotification(
     }
   });
   final String largeIconPath = await _downloadAndSaveFile(
-      'https://cybertizeweb.com/cms/notificationServiceHandler/panel/assets/images/rgclogo.jpg',
+      'https://cybertizeweb.com/cms//panel/assets/images/rgclogo.jpg',
       'largeIcon');
   print(image);
   final String bigPicturePath = await _downloadAndSaveFile(image, 'bigPicture');

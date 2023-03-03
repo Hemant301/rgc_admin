@@ -49,7 +49,7 @@ class _GestAppDetailState extends State<GestAppDetail> {
                     children: [
                       Row(
                         children: [
-                          const Text("Member Name  -  ",
+                          const Text("Member Name    -  ",
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -62,12 +62,25 @@ class _GestAppDetailState extends State<GestAppDetail> {
                       ),
                       Row(
                         children: [
-                          const Text("Member Code  -  ",
+                          const Text("Member Code     -  ",
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.blue)),
                           Text(snapshot.data!.list[0].memberCode!),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        children: [
+                          const Text("Member Mobile  -  ",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue)),
+                          Text(snapshot.data!.list[0].memberDetail!.phone!),
                         ],
                       ),
                       const SizedBox(

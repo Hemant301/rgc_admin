@@ -14,8 +14,8 @@ class GuestListModal {
   dynamic guestNumber;
   GuestListModal(js) {
     id = js['guest_id'] ?? "";
-    name = js['user_name'] ?? "";
-    phone = js['user_phone'] ?? "";
+    name = js['member_name'] ?? "";
+    phone = js['member_code'] ?? "";
     guestNumber = js['guest_no'] ?? "";
   }
 }
