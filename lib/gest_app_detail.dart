@@ -525,7 +525,7 @@ UpdatePopuP(context, guestId, status, rcvdId) {
                           ),
                           child: TextField(
                             controller: reasonController,
-                            maxLines: 10,
+                            maxLines: 5,
                             decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "  Enter Reason for Rejection....."),
