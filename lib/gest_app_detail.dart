@@ -19,8 +19,19 @@ class _GestAppDetailState extends State<GestAppDetail> {
     Map rcvd = ModalRoute.of(context)!.settings.arguments as Map;
     print(rcvd);
     homeBloc.fetchGuestDetails(rcvd['id']);
+    homeBloc.fetchGestReq();
+
     return Scaffold(
       appBar: AppBar(
+        leading: InkWell(
+            onTap: () {
+              if (Navigator.canPop(context)) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushReplacementNamed(context, '/gest_approval');
+              }
+            },
+            child: const Icon(Icons.arrow_back_ios)),
         backgroundColor: const Color(0xffFFB800),
         centerTitle: true,
         title: const Text('Guest List',

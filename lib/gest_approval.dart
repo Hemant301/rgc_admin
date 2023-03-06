@@ -219,23 +219,23 @@ class GuestApprovel extends StatelessWidget {
                                                                         .white,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .bold,
-                                                                  ),
+                                                                          .bold,
                                                                 ),
-                                                              )),
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      const Divider(
-                                                        color: Colors.black26,
-                                                      )
-                                                    ],
-                                                  ),
-                                                ))),
-                                  ),
-                                )
-                              ]),
+                                                              ),
+                                                            )),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    const Divider(
+                                                      color: Colors.black26,
+                                                    )
+                                                  ],
+                                                ),
+                                              ))),
+                                ),
+                              )
+                            ]),
                             ),
                           ),
                   ],
