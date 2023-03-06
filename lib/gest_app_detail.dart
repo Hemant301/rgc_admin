@@ -23,7 +23,7 @@ class _GestAppDetailState extends State<GestAppDetail> {
       appBar: AppBar(
         backgroundColor: const Color(0xffFFB800),
         centerTitle: true,
-        title: const Text('Guest Approval',
+        title: const Text('Guest List',
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -223,210 +223,200 @@ class _GestAppDetailState extends State<GestAppDetail> {
                                                     padding:
                                                         const EdgeInsets.all(
                                                             4.0),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                    child: Column(
                                                       children: [
-                                                        Expanded(
-                                                            flex: 2,
-                                                            child: Text(
-                                                              snapshot
-                                                                  .data!
-                                                                  .list[i]
-                                                                  .user[index]
-                                                                  .name
-                                                                  .toString(),
-                                                              style:
-                                                                  const TextStyle(
-                                                                color: Colors
-                                                                    .black,
-                                                                fontSize: 16,
-                                                              ),
-                                                            )),
-                                                        // const Expanded(
-                                                        //     flex: 2, child: Text("fdgdfgfd")),
-                                                        Expanded(
-                                                            flex: 2,
-                                                            child: Text(
-                                                              snapshot
-                                                                  .data!
-                                                                  .list[i]
-                                                                  .user[index]
-                                                                  .phone
-                                                                  .toString(),
-                                                              style:
-                                                                  const TextStyle(
-                                                                color: Colors
-                                                                    .black,
-                                                                fontSize: 16,
-                                                              ),
-                                                            )),
-
-                                                        Expanded(
-                                                          flex: 2,
-                                                          child: Center(
-                                                            child: Container(
-                                                              padding: const EdgeInsets
-                                                                      .symmetric(
-                                                                  horizontal:
-                                                                      5),
-                                                              height: 40,
-                                                              // width: 60,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                color: Colors
-                                                                    .white,
-                                                                border: Border.all(
-                                                                    color: const Color(
-                                                                        0xff8F8F8F),
-                                                                    width: 2),
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    color: Colors
-                                                                        .grey
-                                                                        .withOpacity(
-                                                                            0.1),
-                                                                    spreadRadius:
-                                                                        1,
-                                                                    blurRadius:
-                                                                        1,
-                                                                    offset: const Offset(
-                                                                        1,
-                                                                        3), // changes position of shadow
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              child: DropDown(
-                                                                showUnderline:
-                                                                    false,
-                                                                items: const [
-                                                                  "Reject",
-                                                                  "Approved",
-                                                                  "Pending",
-                                                                ],
-                                                                onChanged:
-                                                                    (value) async {
-                                                                  if (value ==
-                                                                      "Approved") {
-                                                                    Map data = await homeApi.updateStatus(
-                                                                        context,
-                                                                        guestId: snapshot
-                                                                            .data!
-                                                                            .list[
-                                                                                i]
-                                                                            .user[
-                                                                                index]
-                                                                            .id
-                                                                            .toString(),
-                                                                        status:
-                                                                            "1");
-                                                                    if (data[
-                                                                            'success'] ==
-                                                                        true) {
-                                                                      setState(
-                                                                          () {});
-                                                                    } else {
-                                                                      setState(
-                                                                          () {});
-                                                                    }
-                                                                  } else if (value ==
-                                                                      "Pending") {
-                                                                    Map data = await homeApi.updateStatus(
-                                                                        context,
-                                                                        guestId: snapshot
-                                                                            .data!
-                                                                            .list[
-                                                                                i]
-                                                                            .user[
-                                                                                index]
-                                                                            .id
-                                                                            .toString(),
-                                                                        status:
-                                                                            "0");
-                                                                    if (data[
-                                                                            'success'] ==
-                                                                        true) {
-                                                                      setState(
-                                                                          () {});
-                                                                    }
-                                                                  }
-
-                                                                  value ==
-                                                                          "Reject"
-                                                                      ? UpdatePopuP(
-                                                                          context,
-                                                                          snapshot
-                                                                              .data!
-                                                                              .list[i]
-                                                                              .user[index]
-                                                                              .id
-                                                                              .toString(),
-                                                                          "2",
-                                                                          rcvd['id'])
-                                                                      : Container();
-
-                                                                  print(value);
-                                                                  // _accounttype = value.toString();
-                                                                },
-                                                                hint: Text(
-                                                                  getStatus(snapshot
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Expanded(
+                                                                flex: 2,
+                                                                child: Text(
+                                                                  snapshot
                                                                       .data!
                                                                       .list[i]
                                                                       .user[
                                                                           index]
-                                                                      .status),
-                                                                  style: TextStyle(
-                                                                      color: getStatusColor(snapshot
+                                                                      .name
+                                                                      .toString(),
+                                                                  style:
+                                                                      const TextStyle(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        16,
+                                                                  ),
+                                                                )),
+                                                            // const Expanded(
+                                                            //     flex: 2, child: Text("fdgdfgfd")),
+                                                            Expanded(
+                                                                flex: 2,
+                                                                child: Text(
+                                                                  snapshot
+                                                                      .data!
+                                                                      .list[i]
+                                                                      .user[
+                                                                          index]
+                                                                      .phone
+                                                                      .toString(),
+                                                                  style:
+                                                                      const TextStyle(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        16,
+                                                                  ),
+                                                                )),
+
+                                                            Expanded(
+                                                              flex: 2,
+                                                              child: Center(
+                                                                child:
+                                                                    Container(
+                                                                  padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                      horizontal:
+                                                                          5),
+                                                                  height: 40,
+                                                                  // width: 60,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10),
+                                                                    color: Colors
+                                                                        .white,
+                                                                    border: Border.all(
+                                                                        color: const Color(
+                                                                            0xff8F8F8F),
+                                                                        width:
+                                                                            2),
+                                                                    boxShadow: [
+                                                                      BoxShadow(
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .withOpacity(0.1),
+                                                                        spreadRadius:
+                                                                            1,
+                                                                        blurRadius:
+                                                                            1,
+                                                                        offset: const Offset(
+                                                                            1,
+                                                                            3), // changes position of shadow
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  child:
+                                                                      DropDown(
+                                                                    showUnderline:
+                                                                        false,
+                                                                    items: const [
+                                                                      "Reject",
+                                                                      "Approved",
+                                                                      "Pending",
+                                                                    ],
+                                                                    onChanged:
+                                                                        (value) async {
+                                                                      if (value ==
+                                                                          "Approved") {
+                                                                        Map data = await homeApi.updateStatus(
+                                                                            context,
+                                                                            guestId:
+                                                                                snapshot.data!.list[i].user[index].id.toString(),
+                                                                            status: "1");
+                                                                        if (data['success'] ==
+                                                                            true) {
+                                                                          setState(
+                                                                              () {});
+                                                                        } else {
+                                                                          setState(
+                                                                              () {});
+                                                                        }
+                                                                      } else if (value ==
+                                                                          "Pending") {
+                                                                        Map data = await homeApi.updateStatus(
+                                                                            context,
+                                                                            guestId:
+                                                                                snapshot.data!.list[i].user[index].id.toString(),
+                                                                            status: "0");
+                                                                        if (data['success'] ==
+                                                                            true) {
+                                                                          setState(
+                                                                              () {});
+                                                                        }
+                                                                      }
+
+                                                                      value ==
+                                                                              "Reject"
+                                                                          ? UpdatePopuP(
+                                                                              context,
+                                                                              snapshot.data!.list[i].user[index].id.toString(),
+                                                                              "2",
+                                                                              rcvd['id'])
+                                                                          : Container();
+
+                                                                      print(
+                                                                          value);
+                                                                      // _accounttype = value.toString();
+                                                                    },
+                                                                    hint: Text(
+                                                                      getStatus(snapshot
                                                                           .data!
                                                                           .list[
                                                                               i]
                                                                           .user[
                                                                               index]
                                                                           .status),
-                                                                      fontSize:
-                                                                          12),
-                                                                ),
-                                                                icon:
-                                                                    const Icon(
-                                                                  Icons
-                                                                      .expand_more,
-                                                                  color: Colors
-                                                                      .blue,
+                                                                      style: TextStyle(
+                                                                          color: getStatusColor(snapshot
+                                                                              .data!
+                                                                              .list[i]
+                                                                              .user[index]
+                                                                              .status),
+                                                                          fontSize: 12),
+                                                                    ),
+                                                                    icon:
+                                                                        const Icon(
+                                                                      Icons
+                                                                          .expand_more,
+                                                                      color: Colors
+                                                                          .blue,
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ),
+                                                            )
+                                                            // : Expanded(
+                                                            //     flex: 2,
+                                                            //     child: Center(
+                                                            //       child: Text(
+                                                            //         getStatus(snapshot
+                                                            //             .data!
+                                                            //             .list[i]
+                                                            //             .user[
+                                                            //                 index]
+                                                            //             .status),
+                                                            //         style: TextStyle(
+                                                            //             color: getStatusColor(snapshot
+                                                            //                 .data!
+                                                            //                 .list[
+                                                            //                     i]
+                                                            //                 .user[
+                                                            //                     index]
+                                                            //                 .status),
+                                                            //             fontSize:
+                                                            //                 12),
+                                                            //       ),
+                                                            //     )),
+                                                          ],
+                                                        ),
+                                                        const Divider(
+                                                          color: Colors.black26,
                                                         )
-                                                        // : Expanded(
-                                                        //     flex: 2,
-                                                        //     child: Center(
-                                                        //       child: Text(
-                                                        //         getStatus(snapshot
-                                                        //             .data!
-                                                        //             .list[i]
-                                                        //             .user[
-                                                        //                 index]
-                                                        //             .status),
-                                                        //         style: TextStyle(
-                                                        //             color: getStatusColor(snapshot
-                                                        //                 .data!
-                                                        //                 .list[
-                                                        //                     i]
-                                                        //                 .user[
-                                                        //                     index]
-                                                        //                 .status),
-                                                        //             fontSize:
-                                                        //                 12),
-                                                        //       ),
-                                                        //     )),
                                                       ],
                                                     ),
                                                   ))),

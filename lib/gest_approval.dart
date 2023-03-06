@@ -125,96 +125,110 @@ class GuestApprovel extends StatelessWidget {
                                             (index) => Padding(
                                                   padding:
                                                       const EdgeInsets.all(4.0),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
+                                                  child: Column(
                                                     children: [
-                                                      Expanded(
-                                                          flex: 2,
-                                                          child: Text(
-                                                            snapshot
-                                                                .data!
-                                                                .list[index]
-                                                                .name,
-                                                            style:
-                                                                const TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 16,
-                                                            ),
-                                                          )),
-                                                      // const Expanded(
-                                                      //     flex: 2, child: Text("fdgdfgfd")),
-                                                      Expanded(
-                                                          flex: 2,
-                                                          child: Text(
-                                                            snapshot
-                                                                .data!
-                                                                .list[index]
-                                                                .phone,
-                                                            style:
-                                                                const TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 16,
-                                                            ),
-                                                          )),
-
-                                                      InkWell(
-                                                        onTap: () {
-                                                          // bookingDetailPopUp(
-                                                          //     context,
-                                                          //     bookingHistory[
-                                                          //         index]);
-                                                          Navigator.pushNamed(
-                                                              context,
-                                                              "/gest_app_detail",
-                                                              arguments: {
-                                                                'id': snapshot
-                                                                    .data!
-                                                                    .list[index]
-                                                                    .id,
-                                                                'name': snapshot
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Expanded(
+                                                              flex: 2,
+                                                              child: Text(
+                                                                snapshot
                                                                     .data!
                                                                     .list[index]
                                                                     .name,
-                                                                'phone': snapshot
+                                                                style:
+                                                                    const TextStyle(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize: 16,
+                                                                ),
+                                                              )),
+                                                          // const Expanded(
+                                                          //     flex: 2, child: Text("fdgdfgfd")),
+                                                          Expanded(
+                                                              flex: 2,
+                                                              child: Text(
+                                                                snapshot
                                                                     .data!
                                                                     .list[index]
-                                                                    .phone
-                                                              });
-                                                        },
-                                                        child: Container(
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                                  Colors.black,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8)),
-                                                          child: const Center(
-                                                              child: Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                                    horizontal:
-                                                                        20,
-                                                                    vertical:
-                                                                        4),
-                                                            child: Text(
-                                                              "View",
-                                                              style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
+                                                                    .phone,
+                                                                style:
+                                                                    const TextStyle(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize: 16,
+                                                                ),
+                                                              )),
+
+                                                          InkWell(
+                                                            onTap: () {
+                                                              // bookingDetailPopUp(
+                                                              //     context,
+                                                              //     bookingHistory[
+                                                              //         index]);
+                                                              Navigator.pushNamed(
+                                                                  context,
+                                                                  "/gest_app_detail",
+                                                                  arguments: {
+                                                                    'id': snapshot
+                                                                        .data!
+                                                                        .list[
+                                                                            index]
+                                                                        .id,
+                                                                    'name': snapshot
+                                                                        .data!
+                                                                        .list[
+                                                                            index]
+                                                                        .name,
+                                                                    'phone': snapshot
+                                                                        .data!
+                                                                        .list[
+                                                                            index]
+                                                                        .phone
+                                                                  });
+                                                            },
+                                                            child: Container(
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8)),
+                                                              child:
+                                                                  const Center(
+                                                                      child:
+                                                                          Padding(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            20,
+                                                                        vertical:
+                                                                            4),
+                                                                child: Text(
+                                                                  "View",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
+                                                                ),
+                                                              )),
                                                             ),
-                                                          )),
-                                                        ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      const Divider(
+                                                        color: Colors.black26,
                                                       )
                                                     ],
                                                   ),
