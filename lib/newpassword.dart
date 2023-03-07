@@ -38,6 +38,7 @@ class _NewPasswordState extends State<NewPassword> {
               height: 10,
             ),
             TextField(
+              obscureText: true,
               controller: pwdController,
               decoration: const InputDecoration(hintText: 'New Password'),
             ),
@@ -45,12 +46,14 @@ class _NewPasswordState extends State<NewPassword> {
               height: 10,
             ),
             TextField(
+              obscureText: true,
               controller: cpwdController,
               decoration: const InputDecoration(hintText: 'Confirm Password'),
             ),
             const Spacer(),
             InkWell(
               onTap: () {
+                FocusManager.instance.primaryFocus?.unfocus();
                 if (emailController.text == "" ||
                     pwdController.text == "" ||
                     cpwdController.text == "") {
