@@ -11,6 +11,7 @@ import 'package:path_provider_ios/path_provider_ios.dart';
 import 'package:rgc_admin/gest_app_detail.dart';
 import 'package:rgc_admin/gest_approval.dart';
 import 'package:rgc_admin/login.dart';
+import 'package:rgc_admin/newpassword.dart';
 import 'package:rgc_admin/notify.dart';
 import 'package:rgc_admin/splash.dart';
 import 'package:rgc_admin/util/storage.dart';
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
           "/webview": (context) => const AdminOfRgc(),
           "/gest_approval": (context) => const GuestApprovel(),
           "/gest_app_detail": (context) => const GestAppDetail(),
+          "/newpassword": (context) => const NewPassword(),
         });
   }
 }

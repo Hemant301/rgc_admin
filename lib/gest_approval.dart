@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:rgc_admin/apicall/bloc.dart';
 import 'package:rgc_admin/apicall/modal.dart';
+import 'package:rgc_admin/newpassword.dart';
 import 'package:rgc_admin/notify.dart';
 import 'package:rgc_admin/util/userCred.dart';
 
@@ -219,29 +220,47 @@ class GuestApprovel extends StatelessWidget {
                                                                         .white,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                          .bold,
+                                                                            .bold,
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                            )),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    const Divider(
-                                                      color: Colors.black26,
-                                                    )
-                                                  ],
-                                                ),
-                                              ))),
-                                ),
-                              )
-                            ]),
+                                                              )),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      const Divider(
+                                                        color: Colors.black26,
+                                                      )
+                                                    ],
+                                                  ),
+                                                ))),
+                                  ),
+                                )
+                              ]),
                             ),
                           ),
                   ],
                 );
               })
         ]),
+      ),
+      floatingActionButton: InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const NewPassword(),
+            ),
+          );
+        },
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          decoration:
+              const BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
+          child: const Icon(
+            Icons.settings,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
