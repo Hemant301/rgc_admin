@@ -22,10 +22,10 @@ class HomeBloc {
   final BehaviorSubject<GuestDetailModal> _liveData =
       BehaviorSubject<GuestDetailModal>();
   BehaviorSubject<GuestDetailModal> get getLiveDeatils => _liveData;
-  fetchGuestDetails(id) async {
+  fetchGuestDetails(id,context) async {
     try {
       _liveData.addError("error");
-      GuestDetailModal homeSlider = await _homeRepo.fetchGuestDetails(id);
+      GuestDetailModal homeSlider = await _homeRepo.fetchGuestDetails(id,context);
       // print(homeSlider.imgs!.length);
 
       _liveData.add(homeSlider);

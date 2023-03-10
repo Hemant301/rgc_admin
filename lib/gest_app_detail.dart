@@ -18,7 +18,7 @@ class _GestAppDetailState extends State<GestAppDetail> {
   Widget build(BuildContext context) {
     Map rcvd = ModalRoute.of(context)!.settings.arguments as Map;
     print(rcvd);
-    homeBloc.fetchGuestDetails(rcvd['id']);
+    homeBloc.fetchGuestDetails(rcvd['id'], context);
     homeBloc.fetchGestReq();
 
     return Scaffold(
@@ -83,16 +83,6 @@ class _GestAppDetailState extends State<GestAppDetail> {
                       ),
                       const SizedBox(
                         height: 8,
-                      ),
-                      Row(
-                        children: [
-                          const Text("Member Mobile  -  ",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue)),
-                          Text(snapshot.data!.list[0].memberDetail!.phone!),
-                        ],
                       ),
                       const SizedBox(
                         height: 8,
@@ -495,7 +485,7 @@ UpdatePopuP(context, guestId, status, rcvdId) {
                             ),
                             InkWell(
                               onTap: () {
-                                homeBloc.fetchGuestDetails(rcvdId);
+                                homeBloc.fetchGuestDetails(rcvdId, context);
                                 Navigator.pop(context);
                               },
                               child: const Icon(
@@ -558,7 +548,7 @@ UpdatePopuP(context, guestId, status, rcvdId) {
                                         guestId: guestId,
                                         status: status,
                                         reason: reasonController.text);
-                                    homeBloc.fetchGuestDetails(rcvdId);
+                                    homeBloc.fetchGuestDetails(rcvdId, context);
                                     Navigator.pop(context);
                                   },
                                   child: Container(

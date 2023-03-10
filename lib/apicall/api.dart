@@ -22,7 +22,7 @@ class HomeApi {
     } finally {}
   }
 
-  Future<dynamic> fetchGuestDetails(id) async {
+  Future<dynamic> fetchGuestDetails(id, context) async {
     print(id);
     try {
       final response = await client.post(
@@ -33,6 +33,11 @@ class HomeApi {
       if (response.statusCode == 200) {
         log(response.body);
         return response;
+      }else if (response.statusCode==504){
+        showTextToast(text:"504 Error", context: context);
+
+      
+
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }

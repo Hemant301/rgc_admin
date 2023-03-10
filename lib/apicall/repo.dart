@@ -11,8 +11,8 @@ class HomeRepo {
     return GuestReqListModal(jsonResponse);
   }
 
-  Future<GuestDetailModal> fetchGuestDetails(id) async {
-    final response = await homeApi.fetchGuestDetails(id);
+  Future<GuestDetailModal> fetchGuestDetails(id, context) async {
+    final response = await homeApi.fetchGuestDetails(id, context);
     var jsonResponse = jsonDecode(response.body) as List;
     return GuestDetailModal(jsonResponse);
   }

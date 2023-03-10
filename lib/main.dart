@@ -8,6 +8,7 @@ import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider_android/path_provider_android.dart';
 import 'package:path_provider_ios/path_provider_ios.dart';
+import 'package:rgc_admin/apicall/bloc.dart';
 import 'package:rgc_admin/gest_app_detail.dart';
 import 'package:rgc_admin/gest_approval.dart';
 import 'package:rgc_admin/login.dart';
@@ -57,6 +58,7 @@ void main() async {
         .then((value) => print("badge $value"));
 
     showThisNotification(event.data);
+    homeBloc.fetchGestReq();
   });
   FirebaseMessaging.instance.subscribeToTopic('news');
 
